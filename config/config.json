@@ -1,0 +1,37 @@
+{
+    "INITIAL_CASE": 100,
+    "TOTAL_PPL": 3E8,
+    "VIRUS": {
+        "Covid": {
+            "R0": [2,3]
+        },
+        "SARS": {
+            "R0": [1.8,3.6]
+        }
+    },
+    "MASK": {
+        "usage_perc": 0.5,
+        "effectiveness": 0.5
+    },
+    "VACCINE": {
+        "availability_perc": 0.1,
+        "efficacy": 0.8
+    },
+    "BARRIER": {
+        "quarantine": {
+            "susceptible":0.3,
+            "patient": 0.8
+        },
+        "ventilation": 0.2
+    },
+    "TEST_AND_TRACE": {
+        "test_perc": 0.2,
+        "test_effi": 0.9,
+        "trace_perc": 0.5,
+        "trace_effi": 0.3
+    },
+    "CURE": {
+        "cure_perc": 0.5,
+        "cure_need_days": 14
+    }
+}
