@@ -1,7 +1,14 @@
-import unittest
-from main.func import *
+import sys
+import os
 
 WORKSPACE_DIR = "/Users/Cyxzk/Documents/Documents/NEU/course/INFO6205_Algorithms/INFO6205-FINAL"
+
+PACKAGE_PARENT = WORKSPACE_DIR+"/Python"
+SCRIPT_DIR = os.path.dirname(os.path.realpath(os.path.join(os.getcwd(), os.path.expanduser(__file__))))
+sys.path.append(os.path.normpath(os.path.join(SCRIPT_DIR, PACKAGE_PARENT)))
+
+import unittest
+from main.func import *
 
 class TestPandemicSimulation(unittest.TestCase):
 
@@ -30,6 +37,7 @@ class TestPandemicSimulation(unittest.TestCase):
         self.assertTrue(0 <= R1_expected <= R1, "Mask effect not correct.")
         self.assertTrue(0 <= R2_expected <= R2, "Mask effect not correct.")
         self.assertTrue(0 <= R3_expected <= R3, "Mask effect not correct.")
+
 
     def test_mask_usage_rise(self):
         usage1, usage2 = 0.2, 0.6
