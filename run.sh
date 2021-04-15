@@ -1,3 +1,3 @@
 #!/bin/bash
 
-cat './config/config.json' | python3 Python/main.py | python3 Python/app/app.py
+cat './config/config.json' | python3 Python/script.py | python3 app_python/app/app.py

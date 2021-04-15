@@ -2,7 +2,7 @@ import json
 import random
 import sys
 
-def load_inputs() -> dict:
+def load_json_inputs() -> dict:
     return json.load(sys.stdin)
 
 def load_file(filename: str) -> dict:
