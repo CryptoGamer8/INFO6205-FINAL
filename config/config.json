@@ -1,5 +1,5 @@
 {
-    "INITIAL_CASE": 100,
+    "INITIAL_CASE": 10,
     "TOTAL_PPL": 3E8,
     "VIRUS": {
         "Covid": {

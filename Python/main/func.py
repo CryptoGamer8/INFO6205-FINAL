@@ -1,5 +1,9 @@
 import json
 import random
+import sys
+
+def load_inputs() -> dict:
+    return json.load(sys.stdin)
 
 def load_file(filename: str) -> dict:
     with open(filename) as file:
