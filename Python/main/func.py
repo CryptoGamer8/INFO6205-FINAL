@@ -19,13 +19,11 @@ def vaccine(R: float, availability_perc: float, efficacy: float) -> float:
     efficiency = availability_perc * efficacy
     return R * (1-efficiency)
 
-def vaccine_avail_raise(vaccine_avail: float, days: int) -> float:
-    vaccine_created_day = 300
-    vaccine_all_injected_day = 480
-    if days < vaccine_created_day:
+def vaccine_avail_raise(vaccine_avail: float, days: int, created_day: int, all_injected_day: int) -> float:
+    if days < created_day:
         return 0
-    elif days < vaccine_all_injected_day:
-        return vaccine_avail + (1-vaccine_avail) * (days-vaccine_created_day)/(vaccine_all_injected_day-vaccine_created_day)
+    elif days < all_injected_day:
+        return vaccine_avail + (1-vaccine_avail) * (days-created_day)/(all_injected_day-created_day)
     else:
         return 1
 
@@ -44,11 +42,11 @@ def ppl_limit(R: float, current_case: int, TOTAL_PPL: int) -> float:
     return R * (1 - pow(current_case/TOTAL_PPL,2))
 
 # Patients will cure after certain days
-def cure(new_case_arr: list, cur_day: int, cure_perc: float, cure_need_days: int, TOTAL_case: int) -> int:
-    if cur_day < cure_need_days:
+def cure(new_case_arr: list, day: int, cure_perc: float, cure_need_days: int, TOTAL_case: int) -> int:
+    if day < cure_need_days:
         return 0
     else:
-        cases =  int(new_case_arr[cur_day-cure_need_days]*cure_perc)
+        cases =  int(new_case_arr[day-cure_need_days]*cure_perc)
         return cases if cases < TOTAL_case else TOTAL_case
 
 def cure_perc_raise(cure_perc: float, barrier_quar_patient: float)->float:
