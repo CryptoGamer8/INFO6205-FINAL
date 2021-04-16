@@ -15,7 +15,9 @@
     },
     "VACCINE": {
         "availability_perc": 0.1,
-        "efficacy": 0.8
+        "efficacy": 0.8,
+        "created_day": 300,
+        "all_injected_day": 480
     },
     "BARRIER": {
         "quarantine": {
