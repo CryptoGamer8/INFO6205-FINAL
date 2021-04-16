@@ -1,6 +1,7 @@
 {
-    "INITIAL_CASE": 100,
+    "INITIAL_CASE": 10,
     "TOTAL_PPL": 3E8,
+    "CYCLEs": 480,
     "VIRUS": {
         "Covid": {
             "R0": [2,3]

@@ -1,11 +1,9 @@
 import sys
 import os
 
-WORKSPACE_DIR = "/Users/Cyxzk/Documents/Documents/NEU/course/INFO6205_Algorithms/INFO6205-FINAL"
-
-PACKAGE_PARENT = WORKSPACE_DIR+"/Python"
-SCRIPT_DIR = os.path.dirname(os.path.realpath(os.path.join(os.getcwd(), os.path.expanduser(__file__))))
-sys.path.append(os.path.normpath(os.path.join(SCRIPT_DIR, PACKAGE_PARENT)))
+# PACKAGE_PARENT = "../Python"
+# SCRIPT_DIR = os.path.dirname(os.path.realpath(os.path.join(os.getcwd(), os.path.expanduser(__file__))))
+# sys.path.append(os.path.normpath(os.path.join(SCRIPT_DIR, PACKAGE_PARENT)))
 
 import unittest
 from main.func import *
@@ -13,7 +11,7 @@ from main.func import *
 class TestPandemicSimulation(unittest.TestCase):
 
     def test_load_json_file(self):
-        filename = WORKSPACE_DIR+"/config/config.json"
+        filename = "../config/config.json"
         data = load_file(filename=filename)
         self.assertTrue(data is not None, "Loaded data is None")
         self.assertTrue(type(data) is dict,"Loaded data is not dictionary.")
