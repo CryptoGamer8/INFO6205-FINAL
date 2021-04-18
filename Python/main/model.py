@@ -24,17 +24,17 @@ def main():
     for day in range(1,CYCLEs):
         R = R0
     # mask
-        mask_usage_perc = MASK["usage_perc"]
+        mask_up_limit = MASK["up_limit"]
         mask_effi = MASK["effectiveness"]
-        mask_usage_perc = mask_usage_rise(mask_usage_perc, case, TOTAL_PPL)
+        mask_usage_perc = mask_usage_rise(mask_up_limit, case, TOTAL_PPL, day)
         R = mask(R, mask_usage_perc, mask_effi)
         mask_arr.append(int(mask_usage_perc*TOTAL_PPL))
     # vaccine
-        vaccine_avai = VACCINE["availability_perc"]
+        vaccine_up_limit = VACCINE["up_limit"]
         vaccine_effi = VACCINE["efficacy"]
         vaccine_created = VACCINE["created_day"]
         vaccine_all_injected = VACCINE["all_injected_day"]
-        vaccine_avai = vaccine_avail_raise(vaccine_avai, day, vaccine_created, vaccine_all_injected)
+        vaccine_avai = vaccine_avail_raise(vaccine_up_limit, day, vaccine_created, vaccine_all_injected)
         R = vaccine(R, vaccine_avai,vaccine_effi)
         vaccine_arr.append(int(vaccine_avai*TOTAL_PPL))
     # barrier
@@ -48,9 +48,8 @@ def main():
         trace_effi = TEST_AND_TRACE["trace_effi"]
         R = testAndTrace(R, test_perc, test_effi, trace_perc, trace_effi)
     # population limit
-        
         R = ppl_limit(R, case, TOTAL_PPL)
-        new_case = int(case*R)
+        new_case = add_case(R,case, TOTAL_PPL)
         case += int(new_case)
 
         # cure people from patiens after cure_need_days

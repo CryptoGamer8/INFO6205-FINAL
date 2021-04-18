@@ -11,11 +11,11 @@
         }
     },
     "MASK": {
-        "usage_perc": 0.5,
+        "up_limit": 0.9,
         "effectiveness": 0.5
     },
     "VACCINE": {
-        "availability_perc": 0.1,
+        "up_limit": 0.8,
         "efficacy": 0.8,
         "created_day": 300,
         "all_injected_day": 480
@@ -23,7 +23,7 @@
     "BARRIER": {
         "quarantine": {
             "susceptible":0.3,
-            "patient": 0.8
+            "patient": 0.5
         },
         "ventilation": 0.2
     },
@@ -34,7 +34,7 @@
         "trace_effi": 0.3
     },
     "CURE": {
-        "cure_perc": 0.5,
-        "cure_need_days": 14
+        "cure_perc": 0.3,
+        "cure_need_days": 20
     }
 }

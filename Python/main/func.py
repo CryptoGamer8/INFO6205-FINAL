@@ -16,20 +16,25 @@ def mask(R: float, usage_perc: float, effectiveness: float) -> float:
     efficiency = usage_perc * effectiveness
     return R * (1-efficiency)
 
-def mask_usage_rise(usage: float, cur_case: int, TOTAL_PPL: int) -> float:
-    return usage + (1-usage) *pow((cur_case/TOTAL_PPL),0.2)
+def mask_usage_rise(up_limit: float, cur_case: int, TOTAL_PPL: int, day: int) -> float:
+    
+    e1 = pow(day/100,0.1) if day < 100 else 1
+    e2 = pow((cur_case/TOTAL_PPL),0.1)
+    return up_limit * e1 * e2
 
 def vaccine(R: float, availability_perc: float, efficacy: float) -> float:
     efficiency = availability_perc * efficacy
     return R * (1-efficiency)
 
-def vaccine_avail_raise(vaccine_avail: float, days: int, created_day: int, all_injected_day: int) -> float:
+def vaccine_avail_raise(vaccine_up_limit: float, days: int, created_day: int, all_injected_day: int) -> float:
     if days < created_day:
         return 0
     elif days < all_injected_day:
-        return vaccine_avail + (1-vaccine_avail) * (days-created_day)/(all_injected_day-created_day)
+        r = (1+random_perc(0.01)) * (days-created_day)/(all_injected_day-created_day)
+        r = r if r < 1 else 1
+        return r*vaccine_up_limit
     else:
-        return 1
+        return vaccine_up_limit
 
 def barrel(R: float, **barrels) -> float:
     for efficiency in barrels.values():
@@ -43,7 +48,11 @@ def testAndTrace(R: float, test_perc: float, test_effi: float, trace_perc: float
 
 # Population limits the virus spread
 def ppl_limit(R: float, current_case: int, TOTAL_PPL: int) -> float:
-    return R * (1 - pow(current_case/TOTAL_PPL,2))
+    return R * (1 - pow(current_case/TOTAL_PPL,0.015))
+
+def add_case(R: float, current_case: int, TOTAL_PPL: int) -> float:
+    new_case = int(current_case*R)
+    return new_case if new_case + current_case <= TOTAL_PPL else TOTAL_PPL - current_case
 
 # Patients will cure after certain days
 def cure(new_case_arr: list, day: int, cure_perc: float, cure_need_days: int, TOTAL_case: int) -> int:
