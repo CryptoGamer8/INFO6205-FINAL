@@ -41,10 +41,11 @@ class TestPandemicSimulation(unittest.TestCase):
         usage1, usage2 = 0.2, 0.6
         cur_case1, cur_case2 = 100, 150
         TOTAL_PPL = 200
-        expected1 = mask_usage_rise(usage1, cur_case1, TOTAL_PPL)
-        expected2 = mask_usage_rise(usage2, cur_case2, TOTAL_PPL)
-        self.assertTrue(usage1<=expected1<=1, "Mask usage rise not correct")
-        self.assertTrue(usage2<=expected2<=1, "Mask usage rise not correct")
+        day1, day2 = 100, 200
+        expected1 = mask_usage_rise(usage1, cur_case1, TOTAL_PPL, day1)
+        expected2 = mask_usage_rise(usage2, cur_case2, TOTAL_PPL, day2)
+        self.assertTrue(0<=expected1<=1, "Mask usage rise not correct")
+        self.assertTrue(0<=expected2<=1, "Mask usage rise not correct")
 
     def test_vaccine(self):
         R1, R2, R3 = 2, 3, 4
@@ -79,6 +80,17 @@ class TestPandemicSimulation(unittest.TestCase):
         self.assertTrue( 0<= R1_expected <= R1 , "People limitation effect is over level!")
         self.assertTrue( 0<= R2_expected <= R2 , "People limitation effect is over level!")
         self.assertTrue( 0<= R3_expected <= R3 , "People limitation effect is over level!")
+
+    def test_add_case(self):
+        R1, R2, R3 = 1.8, 2, 3
+        current_case1, current_case2, current_case3 = 100, 5000, 100000
+        TOTAL_PPL = 3000000
+        case1_expected = add_case(R1, current_case1, TOTAL_PPL)
+        case2_expected = add_case(R2, current_case2, TOTAL_PPL)
+        case3_expected = add_case(R3, current_case3, TOTAL_PPL)
+        self.assertTrue( 0<= case1_expected <= TOTAL_PPL-current_case1 , "Case added is over level!")
+        self.assertTrue( 0<= case2_expected <= TOTAL_PPL-current_case2 , "Case added is over level!")
+        self.assertTrue( 0<= case3_expected <= TOTAL_PPL-current_case3 , "Case added is over level!")
 
     def test_cure(self):
         new_case_arr = [1,5,10,20,50,70,100]
