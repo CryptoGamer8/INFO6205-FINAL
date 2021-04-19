@@ -6,8 +6,5 @@
 *.class
 **/__pycache__
 **/*.iml
-Test.java
-Test.class
-test.py
 !Model/**/test.py
 

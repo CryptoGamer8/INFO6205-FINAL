@@ -40,7 +40,7 @@ public class Canvas extends JPanel{
         g2d.setColor(Color.BLACK);
         g2d.drawString("COVID-19 Simulation", 10, 80);
         g2d.drawString("Team members:", 10, 120);
-        g2d.drawString("Xinyi Wu, Ken Zhang, Yumeng Zhang", 10, 150);
+        g2d.drawString("Xinyi Wu, Kan Zhang, Yumeng Zhang", 10, 150);
 
         g2d.drawString("Instruction:", 10, 190);
         g2d.drawString("1. Please choose a virus ( COVID-19 / SARS )", 10, 230);

@@ -3,8 +3,7 @@ from .func import *
 def main():
     config = load_json_inputs()
 
-    R0_range = config["VIRUS"]["Covid"]["R0"]
-    R0 = initial_R0(R0_range[0],R0_range[1])
+    R0 = config["VIRUS"]["R0"]
     INITIAL_CASE = config["INITIAL_CASE"]
     TOTAL_PPL = config["TOTAL_PPL"]
     MASK = config["MASK"]

@@ -1,3 +1,5 @@
+import org.json.JSONObject;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -12,6 +14,10 @@ import java.awt.event.ItemListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.BufferedReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Arrays;
 
 import javax.swing.JOptionPane;
@@ -120,7 +126,7 @@ public class UI implements ActionListener {
     //Build needed GUI components
     private void initGUI() {
         frame = new JFrame();
-        frame.setSize(1000, 1000);
+        frame.setSize(1000, 800);
         frame.setTitle("COVID-19 Simulation");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//Press red button to exit app
         frame.setLayout(new BorderLayout());
@@ -162,7 +168,6 @@ public class UI implements ActionListener {
         l.setForeground(Color.white);
         cb = new JComboBox<String>();
         mainPanel.add(cb);
-        cb.addItem("Option");
         cb.addItem("Covid-19");
         cb.addItem("SARS");
         mainPanel.add(l);
@@ -199,7 +204,7 @@ public class UI implements ActionListener {
         System.out.println("Action Event: " + e);
         if(e.getActionCommand().equalsIgnoreCase("Run")) {
             System.out.println("Run pressed ！！！");
-            listener();
+            runBtnAction();
         }else if(e.getActionCommand().equalsIgnoreCase("Clear")) {
             System.out.println("Clear pressed ！！！");
             ClearBtnAction();
@@ -313,7 +318,7 @@ public class UI implements ActionListener {
     /**
      * ActionListener of JTextField
      */
-    private void listener() {
+    private void runBtnAction() {
 
         //JTextField --- Covid19 R0
         String l1 = r0c.getText();
@@ -497,7 +502,76 @@ public class UI implements ActionListener {
         }
         System.out.println("Barrier Ventilation is "+ l17);
 
+        // export json object to file
+        JSONObject jsonObject = new JSONObject();
 
+        JSONObject virusObject = new JSONObject();
+        virusObject.put("Name","Covid-19");
+        virusObject.put("R0",d1);
+
+        JSONObject maskJO = new JSONObject();
+        maskJO.put("up_limit",d6);
+        maskJO.put("effectiveness",d5);
+
+        JSONObject vaccineJO = new JSONObject();
+        vaccineJO.put("up_limit",dl);
+        vaccineJO.put("efficacy",d7);
+        vaccineJO.put("created_day",d8);
+        vaccineJO.put("all_injected_day",d9);
+
+        JSONObject barrierJO = new JSONObject();
+        JSONObject barQuarJO = new JSONObject();
+        barQuarJO.put("susceptible",d15);
+        barQuarJO.put("patient",d16);
+
+        barrierJO.put("quarantine",barQuarJO);
+        barrierJO.put("ventilation",d17);
+
+        JSONObject testAndTraceJO = new JSONObject();
+        testAndTraceJO.put("test_perc",d11);
+        testAndTraceJO.put("test_effi",d12);
+        testAndTraceJO.put("trace_perc",d13);
+        testAndTraceJO.put("trace_effi",d14);
+
+        JSONObject cureJO = new JSONObject();
+        cureJO.put("cure_perc",d10);
+        cureJO.put("cure_need_days",dnd);
+
+        jsonObject.put("INITIAL_CASE",d3);
+        jsonObject.put("TOTAL_PPL",d4);
+        jsonObject.put("CYCLEs",480);
+        jsonObject.put("VIRUS",virusObject);
+        jsonObject.put("MASK",maskJO);
+        jsonObject.put("VACCINE",vaccineJO);
+        jsonObject.put("BARRIER",barrierJO);
+        jsonObject.put("TEST_AND_TRACE",testAndTraceJO);
+        jsonObject.put("CURE",cureJO);
+
+        FileWriter file = null;
+
+        try {
+            file = new FileWriter("config/config.json");
+            file.write(jsonObject.toString());
+            file.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // run shell here
+        try {
+            Process process = new ProcessBuilder("/bin/sh","script/script.sh").start();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+
+            String line;
+
+            while((line=reader.readLine())!=null){
+                System.out.println(line);
+            }
+
+            int exitCode = process.waitFor();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -743,7 +817,6 @@ public class UI implements ActionListener {
      * @param args
      */
     public static void main(String[] args) {
-
         UI myApp = new UI();
         System.out.println("UI is existing !!!");
 
