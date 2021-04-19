@@ -572,7 +572,7 @@ public class UI implements ActionListener {
         FileWriter file = null;
 
         try {
-            file = new FileWriter("config/config.json");
+            file = new FileWriter("../config/config.json");
             file.write(jsonObject.toString());
             file.close();
         } catch (IOException e) {
@@ -581,7 +581,7 @@ public class UI implements ActionListener {
 
         // run shell here
         try {
-            Process process = new ProcessBuilder("/bin/sh","script/script.sh").start();
+            Process process = new ProcessBuilder("/bin/sh","../script/script.sh").start();
             BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
 
             String line;
@@ -844,6 +844,5 @@ public class UI implements ActionListener {
     public static void main(String[] args) {
         UI myApp = new UI();
         System.out.println("UI is existing !!!");
-
     }
 }
