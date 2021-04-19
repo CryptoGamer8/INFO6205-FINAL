@@ -8,5 +8,5 @@
 **/*.iml
 Test.java
 Test.class
-test.pyc
+test.py
 
