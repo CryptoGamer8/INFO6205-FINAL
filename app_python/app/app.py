@@ -23,7 +23,7 @@ p1.line(x, y2, legend_label="cure cases", line_color="red", line_width=2)
 p1.line(x, y3, legend_label="total cases", line_color="green", line_width=2)
 
 
-p2 = figure(title="Multiple line example", x_axis_label='x', y_axis_label='y')
+p2 = figure(title="Vaccine popularizing", x_axis_label='x', y_axis_label='y')
 p2.line(x, y4, legend_label="mask usage", line_color="blue", line_width=2)
 p2.line(x, y5, legend_label="vaccine injected ppl", line_color="red", line_width=2)
 show(row(p1,p2))
