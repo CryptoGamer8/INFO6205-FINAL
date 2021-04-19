@@ -10,12 +10,8 @@ y2 = data['cure_cases']
 y3 = data['total_cases']
 y4 = data['mask_usage']
 y5 = data['vaccine_avail']
-
-with open("./config/config.json") as f:
-    config = json.load(f)
-    
-CYCLEs = config["CYCLEs"]
-x = range(CYCLEs)
+cycles = data['cycles']
+x = range(cycles)
 
 p1 = figure(title="Multiple line example", x_axis_label='x', y_axis_label='y')
 p1.line(x, y1, legend_label="new cases", line_color="blue", line_width=2)

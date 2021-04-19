@@ -69,6 +69,7 @@ def main():
         total_case_arr.append(case)
 
     outputs = {
+        "cycles": CYCLEs,
         "new_cases": new_case_arr,
         "cure_cases": cure_case_arr,
         "total_cases": total_case_arr,
