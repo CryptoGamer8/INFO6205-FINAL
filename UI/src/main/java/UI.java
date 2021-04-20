@@ -43,9 +43,11 @@ public class UI implements ActionListener {
     private Canvas canvas;
     private FlowLayout f = new FlowLayout();
 
-
+    //JButton -- Run
     private JButton startBtn;
+    //JButton -- Clear
     private JButton pauseBtn;
+    //Jbutton -- Default
     private JButton stopBtn;
 
     //ComboBox -- Virus option
@@ -117,6 +119,7 @@ public class UI implements ActionListener {
     private String option;
     //Flag --- 0 represents covid19, 1 represents SARS
     private int flag;
+    //Global variable for R0
     private double d1;
 
 
@@ -609,7 +612,7 @@ public class UI implements ActionListener {
 
         frame.add(controlPanel);
 
-        //JTextField --- Covid19/SARS R0****************************************
+        //JTextField --- Covid19/SARS R0
         rc = new JLabel("  Covid19/SARS R0: ");
         rc.setForeground(Color.white);
         controlPanel.add(rc);
@@ -622,7 +625,7 @@ public class UI implements ActionListener {
         r0c.setPreferredSize(new Dimension(120,24));
         controlPanel.add(r0c);
 
-        //JTextField --- Cycles***************************************
+        //JTextField --- Cycles
         rs = new JLabel("Cycle: ");
         rs.setForeground(Color.white);
         controlPanel.add(rs);
