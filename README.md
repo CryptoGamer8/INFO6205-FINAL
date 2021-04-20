@@ -13,10 +13,10 @@ source run.sh
 ```
 After opening the Virus Simmulation App, users will see the three buttons and a ComboBox in south. They are:
 
-Run button for starting the app
-Clear button for reseting all parameters 
-Default button for setting all parameters to default vlaues
-Option Combobox for chosing one type of virus
+1. Run button for starting the app
+3. Clear button for reseting all parameters 
+4. Default button for setting all parameters to default vlaues
+5. Option Combobox for chosing one type of virus
 
 To run this app, users need to customize settings. 
 
