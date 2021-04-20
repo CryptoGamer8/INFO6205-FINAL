@@ -42,11 +42,13 @@ public class Canvas extends JPanel{
         g2d.drawString("Team members:", 10, 120);
         g2d.drawString("Xinyi Wu, Kan Zhang, Yumeng Zhang", 10, 150);
 
-        g2d.drawString("Instruction:", 10, 190);
+        g2d.drawString("User Guide:", 10, 190);
         g2d.drawString("1. Please choose a virus ( COVID-19 / SARS )", 10, 230);
-        g2d.drawString("2. Customize settings in the control panel or press Default button", 10, 260);
-        g2d.drawString("3. Press Run button ", 10, 290);
-        g2d.drawString("4. When pops up appears, Please read the hint carefully and re-enter your input ", 10, 320);
-        g2d.drawString("5. Press Clear button to reset parameters", 10, 350);
+        g2d.drawString("2. Click Default button and then all variables will be setted to default values automatically", 10, 260);
+        g2d.drawString("3. If users want to customize settings, read hints in JTextFields and input numbers ", 10, 290);
+        g2d.drawString("4. Click Run button to start the app ", 10, 320);
+        g2d.drawString("5. If some input values are invalid, pop-ups will appear where users can find reasons and imput numbers again", 10, 350);
+        g2d.drawString("6. Click Clear button to reset all parameters ", 10, 380);
+        g2d.drawString("7. Repeat above steps and check the spread of the other virus ", 10, 410);
     }
 }
