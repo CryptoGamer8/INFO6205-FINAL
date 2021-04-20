@@ -18,7 +18,9 @@ Clear button for reseting all parameters
 Default button for setting all parameters to default vlaues
 Option Combobox for chosing one type of virus
 
-To run this app, users need to customize seetings. Here is the instruction:
+To run this app, users need to customize settings. 
+
+User Instruction:
 
 1. Choose one virus (Covid - 19 / SARS)
 2. Click Default button and then all variables will be setted to default values automatically
