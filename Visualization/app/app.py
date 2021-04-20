@@ -3,6 +3,7 @@ from bokeh.layouts import row
 import sys
 import json
 
+
 data = json.load(sys.stdin)
 
 y1 = data['new_cases']
@@ -23,3 +24,24 @@ p2 = figure(title="Vaccine popularizing", x_axis_label='x', y_axis_label='y')
 p2.line(x, y4, legend_label="mask usage", line_color="blue", line_width=2)
 p2.line(x, y5, legend_label="vaccine injected ppl", line_color="red", line_width=2)
 show(row(p1,p2))
+
+from bokeh.models import GlyphRenderer
+import time
+
+p = figure(title='animation example', x_axis_label='x', y_axis_label='y')
+renderer = p.select(dict(type=GlyphRenderer))
+ds = renderer[0].data_source
+
+while True:
+
+    rmin = ds.data["inner_radius"]
+    rmin += 1
+    ds.data["inner_radius"] = rmin
+
+    rmax = ds.data["outer_radius"]
+    rmax -= 1
+    ds.data["outer_radius"] = rmax
+
+    time.sleep(.10)
+
+show(p)

@@ -4,11 +4,14 @@ Final group project for INFO 6205 algorithm
 
 ### Requirements
 * JDK 11.0
-* Bokeh
+* `pip3 install jupyterlab`
+* `pip3 install bokeh`
+* `pip3 install jupyter_bokeh`
+* `pip3 install pandas`
 
 ### Quick Start
 
-```
+```sh
 source run.sh
 ```
 After opening the Virus Simmulation App, users will see the three buttons and a ComboBox in south. They are:
