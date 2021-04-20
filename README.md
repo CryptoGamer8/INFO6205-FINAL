@@ -20,7 +20,7 @@ Option Combobox for chosing one type of virus
 
 To run this app, users need to customize settings. 
 
-User Instruction:
+User Guide:
 
 1. Choose one virus (Covid - 19 / SARS)
 2. Click Default button and then all variables will be setted to default values automatically
