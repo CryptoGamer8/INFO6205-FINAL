@@ -9,3 +9,4 @@
 !Model/**/test.py
 UI/target
 UI/out
+UI/**/resources
