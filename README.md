@@ -11,9 +11,6 @@ Final group project for INFO 6205 algorithm
 
 ### Quick Start
 
-```sh
-source run.sh
-```
 After opening the Virus Simmulation App, users will see the three buttons and a ComboBox in south. They are:
 
 1. Run button for starting the app
