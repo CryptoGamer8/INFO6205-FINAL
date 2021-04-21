@@ -32,6 +32,7 @@ User Guide:
 5. If some input values are invalid, pop-ups will appear where users can find reasons and imput numbers again
 6. Click Clear button to reset all parameters
 7. Repeat the above steps and check the spread of the other virus
+8. To watch the animated simulation graph, you need to run it in terminal with the command `jupyter notebook` this will open a browser window where you can view and run juputer notebooks
 
 
 
