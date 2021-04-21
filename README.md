@@ -1,6 +1,12 @@
 # INFO6205-FINAL
 Final group project for INFO 6205 algorithm
 
+### Group Member
+
+Kan Zhang
+Yumeng Zhang
+Xinyi Wu
+
 
 ### Requirements
 * JDK 11.0
