@@ -7,3 +7,5 @@
 **/__pycache__
 **/*.iml
 !Model/**/test.py
+UI/target
+UI/out
